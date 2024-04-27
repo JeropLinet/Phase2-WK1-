@@ -13,7 +13,7 @@ function App() {
     const[category,setCategory]=useState('')
     const[amount,setAmount]=useState('')
     const[transactions,setTransactions]=useState([]) //this makes sure that the transactions are always an array
-   
+    const [searchTerm, setSearchTerm] = useState('');
    
 
     //adding eventhandlers to handle change in the input
@@ -22,18 +22,21 @@ function App() {
     const handleDescriptionChange=(e)=>setDescription(e.target.value)
     const handleCategoryChange=(e)=>setCategory(e.target.value)
     const handleAmountChange=(e)=>setAmount(e.target.value)
-    
+    const handleSearchChange = (e) => setSearchTerm(e.target.value);
     
    //adding transactions to the table
     const addTransaction = () => {
     const newTransaction = { date, description, category, amount } //creates a new transaction
     setTransactions([...transactions, newTransaction]) //spread operator enables creation of a new array with the existing transaction plus the new one
-    
     setDate('')
     setDescription('')
     setCategory('')
     setAmount('')
-   };
+   }
+
+   const filteredTransactions = transactions.filter((transaction) =>
+        transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
+    )
   
     return(
         <div className='App'>
@@ -43,9 +46,10 @@ function App() {
               <input 
                type='text' 
                placeholder='Search Your Transaction Here'
-             
+              value={searchTerm}
+              onChange={handleSearchChange}
                />
-              <button>&#128269;</button>
+              
             </div>
           
             <div className='addTransaction'>
@@ -94,7 +98,7 @@ function App() {
               </thead>
                 
                 {/* in the transactions component we already have a tbody which is why we do not have to put another tbody */}
-              <Transaction transactions={transactions} />
+              <Transaction transactions={filteredTransactions} />
                 
           </table>
         </div>

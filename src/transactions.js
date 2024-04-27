@@ -17,22 +17,13 @@ function Transaction({ transactions }) {
     </tr>
   ));
 
-  const showSampleTransactions = sampleTransactions.map((item, index) => (
-    <tr key={index}>
-      <td>{item.date}</td>
-      <td>{item.description}</td>
-      <td>{item.category}</td>
-      <td>{item.amount}</td>
-    </tr>
-    
-  ));
+ 
 
   //rendering the sample and the new transactions in the table
   return (
     
     <tbody>
-      {showSampleTransactions}
-      {showTransactions}
+     {showTransactions}
     </tbody>
   );
 }
