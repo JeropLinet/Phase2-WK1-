@@ -12,7 +12,7 @@ function App() {
     const[description,setDescription]=useState('')
     const[category,setCategory]=useState('')
     const[amount,setAmount]=useState('')
-  
+    const[transactions,setTransactions]=useState([]) //this makes sure that the transactions are always an array
    
 
     //adding eventhandlers to handle change in the input
@@ -22,7 +22,16 @@ function App() {
     const handleCategoryChange=(e)=>setCategory(e.target.value)
     const handleAmountChange=(e)=>setAmount(e.target.value)
     
-  
+   //adding transactions to the table
+    const addTransaction = () => {
+    const newTransaction = { date, description, category, amount } //creates a new transaction
+    setTransactions([...transactions, newTransaction]) //spread operator enables creation of a new array with the existing transaction plus the new one
+    
+    setDate('')
+    setDescription('')
+    setCategory('')
+    setAmount('')
+   };
     return(
         <div className='App'>
             <h1 className='header'>The Royal Bank of Flatiron</h1>
@@ -31,8 +40,8 @@ function App() {
               <input 
                type='text' 
                placeholder='Search Your Transaction Here'
-               >
-               </input>
+               
+               />
               <button >&#128269;</button>
             </div>
           
@@ -41,49 +50,49 @@ function App() {
                type='text' 
                placeholder='Date' 
                value={date} 
-               onChange={handleDateChange}>
-              </input>
+               onChange={handleDateChange}
+              />
 
               <input
                 type='text'
                 placeholder='Description' 
                 value={description}
-                onChange={handleDescriptionChange}>
-              </input>
+                onChange={handleDescriptionChange}
+              />
 
               <input 
                type='text' 
                placeholder='Category'
                value={category}
-               onChange={handleCategoryChange}>
-              </input>
+               onChange={handleCategoryChange}
+              />
               
               <input 
                type='text' 
                placeholder='Amount'
                value={amount}
-               onChange={handleAmountChange}>
-               </input>
-            </div>
-            
+               onChange={handleAmountChange}
+               />
+
             <button 
             className='addTransaction' 
-           >Add Transaction
+            onClick={addTransaction}>Add Transaction
             </button>
-
-          
-
+            </div>
+            
           <table className='table'>
-                <thead>
+              <thead>
                     <tr>
                      <th>Date</th>
                      <th>Description</th>
                      <th>Category</th>
                      <th>Amount</th>
                     </tr>
-                </thead>
-                {/* in the transactions component we already has a tbody which is why we do not have to put another tbody */}
-                <Transaction/> 
+              </thead>
+                
+                {/* in the transactions component we already have a tbody which is why we do not have to put another tbody */}
+              <Transaction transactions={transactions} />
+                
           </table>
         </div>
     )
