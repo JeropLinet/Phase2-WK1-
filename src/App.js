@@ -13,7 +13,7 @@ function App() {
     const[category,setCategory]=useState('')
     const[amount,setAmount]=useState('')
     const[transactions,setTransactions]=useState([]) //this makes sure that the transactions are always an array
-    const [searchTerm, setSearchTerm] = useState('');
+    const[searchTransactions, setSearchTransactions] = useState('');
    
 
     //adding eventhandlers to handle change in the input
@@ -22,7 +22,7 @@ function App() {
     const handleDescriptionChange=(e)=>setDescription(e.target.value)
     const handleCategoryChange=(e)=>setCategory(e.target.value)
     const handleAmountChange=(e)=>setAmount(e.target.value)
-    const handleSearchChange = (e) => setSearchTerm(e.target.value);
+    const handleSearchChange = (e) => setSearchTransactions(e.target.value);
     
    //adding transactions to the table
     const addTransaction = () => {
@@ -33,10 +33,10 @@ function App() {
     setCategory('')
     setAmount('')
    }
-
-   const filteredTransactions = transactions.filter((transaction) =>
-        transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+//use of .filter which removes the transactions that are not placed in the serach button
+//i have placed that the descreption is the one that gets filtered
+const filteredTransactions = transactions.filter((transaction) =>
+transaction.description.includes(searchTransactions))
   
     return(
         <div className='App'>
@@ -46,7 +46,7 @@ function App() {
               <input 
                type='text' 
                placeholder='Search Your Transaction Here'
-              value={searchTerm}
+              value={searchTransactions}
               onChange={handleSearchChange}
                />
               
