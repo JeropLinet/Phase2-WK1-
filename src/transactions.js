@@ -28,6 +28,7 @@ function Transaction({ transactions }) {
 
   //rendering the sample and the new transactions in the table
   return (
+    
     <tbody>
       {showSampleTransactions}
       {showTransactions}
