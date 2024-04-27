@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import './index.css'
+import Transaction from './transactions';
 
 function App() {
     return(
@@ -22,12 +23,15 @@ function App() {
 
             <table className='table'>
                 <thead>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Amount</th>
+                    <tr>
+                     <th>Date</th>
+                     <th>Description</th>
+                     <th>Category</th>
+                     <th>Amount</th>
+                    </tr>
                 </thead>
-
+                {/* in the transactions component we alredy has a tbody which is why we do not have to put another tbody */}
+                <Transaction/> 
             </table>
         </div>
     )

@@ -18,13 +18,16 @@
 .addTransaction{
   align-items: center;
 }
-.table{
-  border: 2px solid black;
-  width:95%;
-  margin: 10px;
+.table {
+  border-collapse: collapse; 
+  width: 100%; 
 }
 
-.table th{
-  border:1px solid black ;
-  padding: 10px;
+th, td {
+  border: 1px solid black; 
+  padding: 8px; 
+}
+
+th {
+  background-color: #f2f2f2; 
 }
