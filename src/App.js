@@ -8,42 +8,72 @@ function App() {
     //a state is an object that represents the data that the component should keep track off
     //useState manages the state of components
     // calling usestate returns the value of the current state and allows the user to update the state
-    const[date,SetDate]=useState('')
-    const[description,SetDescription]=useState('')
-    const[category,SetCategory]=useState('')
-    const[amount,SetAmount]=useState('')
+    const[date,setDate]=useState('')
+    const[description,setDescription]=useState('')
+    const[category,setCategory]=useState('')
+    const[amount,setAmount]=useState('')
+  
+   
 
+    //adding eventhandlers to handle change in the input
+    //e.target.value access the value of the input fielld
+    const handleDateChange=(e)=>setDate(e.target.value)
+    const handleDescriptionChange=(e)=>setDescription(e.target.value)
+    const handleCategoryChange=(e)=>setCategory(e.target.value)
+    const handleAmountChange=(e)=>setAmount(e.target.value)
+    
+  
     return(
         <div className='App'>
             <h1 className='header'>The Royal Bank of Flatiron</h1>
 
             <div className='search'>
-              <input type='text' placeholder='Search Your Transaction Here'></input>
-              <button>&#128269;</button>
+              <input 
+               type='text' 
+               placeholder='Search Your Transaction Here'
+               >
+               </input>
+              <button >&#128269;</button>
             </div>
-          <form>
+          
             <div className='addTransaction'>
               <input 
                type='text' 
                placeholder='Date' 
-               value={date}>
+               value={date} 
+               onChange={handleDateChange}>
               </input>
 
               <input
                 type='text'
                 placeholder='Description' 
-                value={description}>
+                value={description}
+                onChange={handleDescriptionChange}>
               </input>
 
               <input 
-               type='text' placeholder='Category'></input>
-              <input type='text' placeholder='Amount'></input>
+               type='text' 
+               placeholder='Category'
+               value={category}
+               onChange={handleCategoryChange}>
+              </input>
+              
+              <input 
+               type='text' 
+               placeholder='Amount'
+               value={amount}
+               onChange={handleAmountChange}>
+               </input>
             </div>
             
-            <button className='addTransaction'>Add Transaction</button>
-          </form>
+            <button 
+            className='addTransaction' 
+           >Add Transaction
+            </button>
 
-            <table className='table'>
+          
+
+          <table className='table'>
                 <thead>
                     <tr>
                      <th>Date</th>
@@ -52,11 +82,11 @@ function App() {
                      <th>Amount</th>
                     </tr>
                 </thead>
-                {/* in the transactions component we alredy has a tbody which is why we do not have to put another tbody */}
+                {/* in the transactions component we already has a tbody which is why we do not have to put another tbody */}
                 <Transaction/> 
-            </table>
+          </table>
         </div>
     )
-}
+   }
 
 export default App;
