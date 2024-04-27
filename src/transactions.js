@@ -24,6 +24,7 @@ function Transaction({ transactions }) {
       <td>{item.category}</td>
       <td>{item.amount}</td>
     </tr>
+    
   ));
 
   //rendering the sample and the new transactions in the table
