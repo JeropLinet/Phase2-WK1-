@@ -1,6 +1,6 @@
 .header{
-  background: blueviolet;
-  color: white;
+  background: #B03060;
+  color:#FFFFFF;
   text-align: center;
 }
 
@@ -10,14 +10,16 @@
 }
 
 .addTransaction input {
- width: 300px;
+ width: 200px;
  margin: 10px;
  margin-right: 10px;
 
 }
 .addTransaction{
   align-items: center;
+  
 }
+
 .table {
   border-collapse: collapse; 
   width: 95%; 
