@@ -13,9 +13,9 @@ function App() {
     const[category,setCategory]=useState('')
     const[amount,setAmount]=useState('')
     const[transactions,setTransactions]=useState([]) //this makes sure that the transactions are always an array
-    const[searchTransactions, setSearchTransactions] = useState('');
+    const[searchTransactions, setSearchTransactions] = useState('')
    
-
+    
     //adding eventhandlers to handle change in the input
     //e.target.value access the value of the input fielld
     const handleDateChange=(e)=>setDate(e.target.value)
@@ -33,11 +33,19 @@ function App() {
     setCategory('')
     setAmount('')
    }
-//use of .filter which removes the transactions that are not placed in the serach button
-//i have placed that the descreption is the one that gets filtered
-const filteredTransactions = transactions.filter((transaction) =>
-transaction.description.includes(searchTransactions))
-  
+//for the user to be able to filter through all the transactions in the table
+const allTransactions = [...transactions, // Adds transactions
+    { date: "2019-08-07", description: "Movies", category: "Entertainment", amount: -89 }, // Sample transactions
+    { date: "2019-07-07", description: "Chipotle", category: "Food", amount: 200 },
+    
+  ];
+//use of .filter which filters transactions based on what the user has place in the search field
+//i have included that the description is the one that gets filtered
+  const filteredTransactions = allTransactions.filter((transaction) =>
+    transaction.description.toLowerCase().includes(searchTransactions.toLowerCase())
+  )
+
+  //rendering everything to be displayed
     return(
         <div className='App'>
             <h1 className='header'>The Royal Bank of Flatiron</h1>
