@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.custom-datepicker {
+  display: inline-block;
+  width: 150px; 
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker-popper {
+  z-index: 9999; 
+}
